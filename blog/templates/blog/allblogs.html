@@ -1,7 +1,6 @@
 
 <!doctype html>
 <html lang="en">
-
   <head>
     {% load static %}
     <meta charset="utf-8">
@@ -9,12 +8,10 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>SHRIDEEP</title>
+    <title>SHRIDEEP's BLOG</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
-
+    
     <!-- CSS only -->
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     
@@ -35,52 +32,33 @@
           <div class="navbar-nav mr-auto">
                 <a class="nav-link" href="http://twitter.com/@shreedhar848392">twitter </a>
               <a class="nav-link" href="{% static 'UPSC - Registration Slip.pdf'%}">resume</a>
-          <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
+          <a class="nav-link active" href="{% url 'allblogs' %}">Blog</a>
               </div>
         </div>
       </nav>
     </header>
 
-<main>
+  <main role="main">
+    <div class= "container">
 
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">hey! i'm SHRIDEEP</h1>
-        <p class="lead text-muted">i want to share something with you . the real magic behind the coding it whats in practicing it over and over again.</p>
-        <p>
-          <a href="mailto:shridharvinchurkar2000@gmail.com" class="btn btn-primary my-2">Email Me</a>
-          
-        </p>
+   <h1 class= "text-center pt-4">WELCOME TO SHRIDEEP'S BLOGPOST</h1>
+   <br />
+   <br />
+   <h2>LATEST POSTS</h2>
+   <hr />
 
-        <img src="{% static 'IMG20191110205731.jpg' %}" height="150" width="150"  calss = img-fluid/>
-      </div>
-    </div>
-  </section>
+     {% for blog in blogs.all %}
 
-  <div class="album py-5 bg-light">
-    <div class="container">
+         <a href="% url 'detail' blogid %"><h3>{{ blog.title }}</h3> </a>
 
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-       
-       {% for job in jobs.all %}
-        <div class="col">
-          <div class="card shadow-sm">
-            <img class="card-img-top" src="{{ job.image.url }}" />
+     <br />
+      <img class = "img-fluid" src= "{{ blog.image.url }}" height="200" width="200" />
+      <br />
+     <p>{{ blog.body }} </p>
 
-            <div class="card-body">
-              <p class="card-text">{{ job.summary }}</p>
-              
-            </div>
-          </div>
-        </div>
-
-        {% endfor %}
-
-       
-  </div>
-
-</main>
+     {% endfor %}
+     </div>
+  </main>
 
 <footer class="text-muted py-5">
   <div class="container text-center">
